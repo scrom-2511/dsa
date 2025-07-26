@@ -29,12 +29,8 @@ class Hashing_1 {
     public static HashMap<Integer, Integer> hashNumMap(int[] arr){
         HashMap<Integer, Integer> hash = new HashMap<>();
         for (int i = 0; i < arr.length; i++){
-            if(hash.containsKey(arr[i])){
-                int count = hash.get(arr[i]) + 1;
-                hash.put(arr[i], count);
-            }else{
-                hash.put(arr[i], 1);
-            }
+            // Use getOrDefault to increment the count
+            hash.put(arr[i], hash.getOrDefault(arr[i], 0) + 1);
         }
         return hash;
     }
@@ -65,6 +61,17 @@ class Hashing_1 {
         int i = ch - 33;
         return arr[i];
     }
+    public static HashMap<Character, Integer> hashCharMap(String str) {
+        HashMap<Character, Integer> charMap = new HashMap<>();
+        
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            charMap.put(ch, charMap.getOrDefault(ch, 0) + 1);
+        }
+        
+        return charMap;
+    }
+
     
     public static void main(String[] args) {
         int arr[] = {3, 4, 5, 6, 2, 6};
@@ -76,8 +83,10 @@ class Hashing_1 {
         
         
         String testString = "arr!";
-        int[] charFreqArr = hashChar(testString);  
-        System.out.println(Arrays.toString(charFreqArr));
-        System.out.println(getCharCount(charFreqArr, 'r'));
+        // int[] charFreqArr = hashChar(testString);
+        // System.out.println(Arrays.toString(charFreqArr));
+        // System.out.println(getCharCount(charFreqArr, 'r'));
+        HashMap<Character, Integer> freqChar = hashCharMap(testString);
+        System.out.println(freqChar.get('i'));
     }
 }
