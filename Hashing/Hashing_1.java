@@ -1,4 +1,6 @@
 import java.util.Arrays;
+import java.util.HashMap;
+
 class Hashing_1 {
     //NUMBER HASHING
     public static int findMaxNum(int[] arr){
@@ -23,6 +25,18 @@ class Hashing_1 {
     }
     public static int getNumCount(int[] arr, int num){
         return arr[num];
+    }
+    public static HashMap<Integer, Integer> hashNumMap(int[] arr){
+        HashMap<Integer, Integer> hash = new HashMap<>();
+        for (int i = 0; i < arr.length; i++){
+            if(hash.containsKey(arr[i])){
+                int count = hash.get(arr[i]) + 1;
+                hash.put(arr[i], count);
+            }else{
+                hash.put(arr[i], 1);
+            }
+        }
+        return hash;
     }
     
     // CHARACTER HASHING
@@ -54,9 +68,11 @@ class Hashing_1 {
     
     public static void main(String[] args) {
         int arr[] = {3, 4, 5, 6, 2, 6};
-        int[] freqArr = hashNum(arr);  
-        System.out.println(Arrays.toString(freqArr));
-        System.out.println(getNumCount(freqArr, 6));
+        // int[] freqArr = hashNum(arr);
+        // System.out.println(Arrays.toString(freqArr));
+        // System.out.println(getNumCount(freqArr, 6));
+        HashMap<Integer, Integer> freqNum = hashNumMap(arr);
+        System.out.println(freqNum.get(6));
         
         
         String testString = "arr!";
