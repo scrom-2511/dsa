@@ -1,3 +1,6 @@
+// https://leetcode.com/problems/odd-even-linked-list/
+// https://takeuforward.org/data-structure/segregate-even-and-odd-nodes-in-linkedlist
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
